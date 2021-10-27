@@ -1,0 +1,12 @@
+<h1>welcome to <strong>Meshiterro</strong> !!</h1>
+<p>In <strong>Meshiterro</strong>,</p>
+<p>SNS community that indiscriminately stimulates the appetite of sensible citizens.</p>
+
+<% if user_signed_in? %>
+  <%= link_to "Log in", post_images_path %>
+  <%= link_to "Sgin in", post_images_path %>
+<% else %>
+  <%= link_to "Log in", new_user_session_path %>
+  <%= link_to "Sgin in", new_user_registration_path %>
+<% end %>
+

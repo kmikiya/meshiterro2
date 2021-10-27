@@ -1,0 +1,19 @@
+<main class="mb-auto">
+  <div class="card-list-container py-5">
+    <div class="card w-50 mx-auto mt-4 shadow-lg"></div>
+    <div class="card w-50 mx-auto mt-4 shadow-lg"></div>
+    <div class="card w-50 mx-auto mt-4 shadow-lg"></div>
+  </div>
+</main>
+
+
+
+<% @post_images.each do |post_image| %>
+<%= link_to post_image_path(post_image.id) do %>
+  <%= attachment_image_tag post_image, :image, size: '400x400' %>
+  <%= post_image.shop_name %>
+  <% end %>
+  <%= post_image.caption %>
+<%= attachment_image_tag post_image.user, :profile_image, size: '60x60', fallback: "no_image.jpg" %>
+  <%= post_image.user.name %>
+<% end %>
