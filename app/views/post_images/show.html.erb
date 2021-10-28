@@ -28,19 +28,28 @@
               <% end %>
             <% end %>
             </span>
-            <span><i class="fa fa-comment"></i></span>
+            <span><i class="fa fa-comment"></i>
+              | <%= @post_image.post_comments.count %>件
+            </span>
             <span><i class="fa fa-calendar"></i></span>
             <% if current_user == @post_image.user %>
             <%= link_to "削除", post_image_path(@post_image), method: :delete %>
             <% end %>
           </div>
+          <h1>comment</h1>
+          <%= form_with(model:[@post_image, @post_comment], local: true) do |f| %>
+          <%= f.text_area :comment %>
+          <%= f.submit '投稿' %>
+          <% end %>
         </div>
+        <% @post_comments.each do |comment| %>
+        　<%= attachment_image_tag comment.user, :profile_image, size: '30x30', fallback: "no_image.jpg", class: "mt-3 rounded-circle" %>
+          <%= comment.comment %>
+          <% if @post_comment.user == current_user %>
+           <%= link_to "delete", post_image_post_comment_path(comment.post_image_id, comment.id), method: :delete %>
+          <% end %>
+        <% end %>
       </div>
     </div>
   </div>
 </main>
-
-
-
-
-  <%= @post_image.user.name %>

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   root to: 'homes#top'
   resources :post_images do
     resource :favorites, only:[:create, :destroy]
+    resources :post_comments, only:[:create, :edit, :destroy]
   end
   resources :users
 end
