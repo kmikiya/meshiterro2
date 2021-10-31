@@ -39,7 +39,7 @@
           <h1>comment</h1>
           <%= form_with(model:[@post_image, @post_comment], local: true) do |f| %>
           <%= f.text_area :comment %>
-          <%= f.submit '投稿!' %>
+          <%= f.submit '投稿' %>
           <% end %>
         </div>
         <% @post_comments.each do |comment| %>
